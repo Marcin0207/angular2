@@ -1,2 +1,18 @@
 <button type ="button" (click) = "toggleExists() ">Toggle Component</button>
 <app-my-comp2 *ngIf="exists"></app-my-comp2>
+<app-my-component *ngFor="let movie of topMovies; let i = index" [movie] = "movie">
+  {{i+1}}.{{movie.title}}
+</app-my-component>
+
+<div class = tab-selection>
+  <app-app-tab [active]=isSelected(1) (click)=" setTab(1)">Tab 1</app-app-tab>
+  <app-app-tab  [active]=isSelected(2) (click)=" setTab(2)">Tab 2</app-app-tab >
+  <app-app-tab  [active]=isSelected(3) (click)=" setTab(3)">Tab 3</app-app-tab >
+</div>
+
+<div [ngSwitch]="tab">
+  <app-app-tab-component *ngSwitchCase="1">Tab content 1</app-app-tab-component>
+  <app-app-tab-component *ngSwitchCase="2">Tab content 2</app-app-tab-component>
+  <app-app-tab-component *ngSwitchCase="3">Tab content 3</app-app-tab-component>
+  <div *ngSwitchDefault>Select a tab</div>
+</div>

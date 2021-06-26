@@ -9,7 +9,9 @@ export class MyComponentComponent implements OnInit {
 
   @Input()
   movie: any
-  constructor() { }
+  constructor() {
+
+  }
 
   ngOnInit(): void {
   }

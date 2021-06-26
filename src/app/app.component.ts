@@ -1,17 +1,32 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styles: [`   .tabs-selection {background-color: #ddd; padding-left: 15px; cursor: pointer;} `]
+  styles: [`   .tabs-selection {
+    background-color: #ddd;
+    padding-left: 15px;
+    cursor: pointer;
+  } `]
 })
+
+
+
 export class AppComponent {
   title = 'my-project';
   exists = true;
   tab = 2;
+  audio = new Audio();
 
-  toggleExists(){
+  constructor() {
+    this.initAudio();
+  }
+
+  toggleExists() {
     this.exists = !this.exists;
+    if (this.exists) {
+      this.audio.play();
+    } else this.audio.pause();
   }
 
   topMovies = [
@@ -26,7 +41,15 @@ export class AppComponent {
   setTab(num: number) {
     this.tab = num;
   }
-  isSelected(num: number){
-    return this.tab ===num;
+
+  isSelected(num: number) {
+    return this.tab === num;
   }
+
+  private initAudio() {
+    this.audio.src = '../../assets/audio/scotland-the-brave-ringtone.mp3'
+    this.audio.load();
+  }
+
+
 }

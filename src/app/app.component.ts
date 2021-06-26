@@ -19,9 +19,11 @@ export class AppComponent {
   audio = new Audio();
 
   constructor() {
-    this.initAudio();
   }
 
+  ngOnInit(){
+    this.initAudio();
+  }
   toggleExists() {
     this.exists = !this.exists;
     if (this.exists) {
